@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchAdmins } from '../actions';
+import requireAuth from '../components/hocs/requireAuth';
 
 class AdminsListPage extends Component {
   static propTypes = {
@@ -44,6 +45,6 @@ export default {
   component: connect(
     mapStateToProps,
     { fetchAdmins },
-  )(AdminsListPage),
+  )(requireAuth(AdminsListPage)),
   loadData: ({ dispatch }) => dispatch(fetchAdmins()),
 };
